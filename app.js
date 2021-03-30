@@ -8,7 +8,6 @@ function initMap() {
     
     //map = new google.maps.Map(document.getElementById('map'), position);  
 
-    function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
             center: position,
             zoom: 15
@@ -20,7 +19,7 @@ function initMap() {
             radius : 5500,
             type : ["restaurant"]
         }, callback);
-    }
+    
     
     function callback(results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
