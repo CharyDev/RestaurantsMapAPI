@@ -1,22 +1,13 @@
 var map;
 
 function initMap() {  
-
-
     var position = { 
-<<<<<<< HEAD
         center: { lat: 13.8029919, lng: 100.5390271 },
         zoom:15
-=======
-        center: { lat: 13.847860, lng: 100.604274 },
-        zoom:20
->>>>>>> 79a027529eba92e7c74646a4d0cd76ec193e6602
     };  
     
-    map = new google.maps.Map(document.getElementById('map'), position);  
+     map = new google.maps.Map(document.getElementById('map'), position);  
 
-
-	
     //Create search box from index.html
     const input = document.getElementById('search');       
     const searchBox =  new google.maps.places.SearchBox(input);   
@@ -65,4 +56,5 @@ function initMap() {
         map.fitBounds(bounds);
     });
 }
+
 
