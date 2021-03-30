@@ -9,16 +9,22 @@
   </head>
 
   <body>
-    <div class="row">
+
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand">Restaurants</a>
+      <div class="row mar-top col-sm-8">
+        <div class="col-sm-10">
+          <input type="text" id="search" class="form-control" placeholder="Bang sue." aria-label="search">
+        </div>
+      </div>
+  
+    </nav>
+
+    <!-- <div class="row">
       <h3>Restaurants</h3>
     </div>
+     -->
     
-    <div class="row mar-top">
-      <div class="col">
-        <input type="text" id="search" class="form-control" placeholder="Bang sue." aria-label="search">
-      </div>
-    </div>
-
     <div class="row mar-top">
       <div class="col-sm-12">
         <div id="map" class="css-map" ></div>
@@ -27,7 +33,6 @@
 
 
   <!-- Google Maps API -->
-  <!-- https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&type=restaurant&keyword=chinese&key=YOUR_API_KEY -->
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZXmaUJUBBxpkgy-doiQmSQmZ9VzbexUI&callback=initMap&libraries=places&v=weekly" async></script>
   <script src="app.js"></script> 

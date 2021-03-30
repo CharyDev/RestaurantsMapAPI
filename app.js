@@ -1,23 +1,17 @@
 var map;
 
 function initMap() {  
+
+
     var position = { 
         center: { lat: 13.8029919, lng: 100.5390271 },
         zoom:15
     };  
-
+    
     map = new google.maps.Map(document.getElementById('map'), position);  
+
+
 	
-    var marker = new google.maps.Marker({
-        position : {
-            lat: 13.8029919, 
-            lng: 100.5390271
-        },
-        map:map,
-        draggable: true,
-    });  
-
-
     //Create search box from index.html
     const input = document.getElementById('search');       
     const searchBox =  new google.maps.places.SearchBox(input);   
@@ -48,6 +42,7 @@ function initMap() {
             if(!p.geometry){
                 return;
             } 
+
             // Create marker for each place.           
             markers.push(new google.maps.Marker({ 
                 map: map,
