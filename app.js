@@ -2,57 +2,67 @@ var map;
 
 function initMap() {  
     var position = { 
-        center: { lat: 13.847860, lng: 100.604274 },
-    zoom:10
+        center: { lat: 13.8029919, lng: 100.5390271 },
+        zoom:15
     };  
 
     map = new google.maps.Map(document.getElementById('map'), position);  
-    
-    // google.maps.event.addListener(map,'click',function(event){
-    //     alert(event.latLng);
-    // });
+	
+    var marker = new google.maps.Marker({
+        position : {
+            lat: 13.8029919, 
+            lng: 100.5390271
+        },
+        map:map,
+        draggable: true,
+    });  
 
-    var input = document.getElementById('search');
-    var searchBox =  new google.maps.places.SearchBox(input);
 
- 
+    //Create search box from index.html
+    const input = document.getElementById('search');       
+    const searchBox =  new google.maps.places.SearchBox(input);   
 
-    map.addListener('bounds_changed',function(){
+    //list results from searchBox
+    map.addListener('bounds_changed',() => {  
         searchBox.setBounds(map.getBounds());
     });
 
-    var markers = [];
-    searchBox.addListener('places_changed',function(){
+    var markers = []; 
+    //when the user selects place
+    searchBox.addListener('places_changed',()=>{ 
         var places = searchBox.getPlaces();
 
-        if (places.length === 0)
+        if (places.length === 0){
             return;
-        markers.forEach(function(m){m.setMap(null);});
-        markers = [];
+        }
+        
+        //Clear old markers
+        markers.forEach((m)=>{
+            m.setMap(null);
+        });
 
-        var bounds = new google.maps.LatLngBounds();
-        places.forEach(function(p){        
-            if(!p.geometry)
-            return;
-            markers.push(new google.maps.Marker({
+        markers = [];    
+        //For each place   
+        var bounds = new google.maps.LatLngBounds();  
+        places.forEach((p)=>{        
+            if(!p.geometry){
+                return;
+            } 
+            // Create marker for each place.           
+            markers.push(new google.maps.Marker({ 
                 map: map,
                 title: p.name,
-                position: p.geometry.location
+                position: p.geometry.location               
             }));
 
-            if (p.geometry.viewport)
-                bounds.union(p.geometry.viewport);
+            //geocodes have viewport.
+            if (p.geometry.viewport) 
+                bounds.union(p.geometry.viewport);               
             else
                 bounds.extend(p.geometry.location);   
         });
 
-        //test
-        // var ptest = new google.maps.event.addListener(map,'click',function(event){
-        //     alert(event.latLng);
-        //     });
-        
-        //     console.log(ptest);
-        //test
         map.fitBounds(bounds);
     });
 }
+
