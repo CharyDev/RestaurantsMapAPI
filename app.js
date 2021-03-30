@@ -2,7 +2,6 @@ var map;
 
 function initMap() {  
 
-
     var position = { 
         center: { lat: 13.8029919, lng: 100.5390271 },
         zoom:15
